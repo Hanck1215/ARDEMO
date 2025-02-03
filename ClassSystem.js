@@ -4,7 +4,7 @@ import { Cabinet3D } from "./ClassCabinet3D.js";
 import { FeatureExtractor } from "./ClassFeatureExtractor.js";
 import { PoseEstimator } from "./ClassPoseEstimator.js"
 import { AngleLimiter } from "./ClassAngleLimiter.js";
-import { THREE } from './module.js';
+import { THREE } from './blob/main/module.js';
 
 export class System {
 	/** 使編譯器知道這些變數的類型
