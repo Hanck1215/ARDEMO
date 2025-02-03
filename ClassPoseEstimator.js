@@ -1,5 +1,5 @@
-import { THREE } from './blob/main/module.js';
-import KalmanFilter from "./blob/main/kalman.js";
+import { THREE } from './module.js';
+import KalmanFilter from "./kalman.js";
 
 export class PoseEstimator {
 	constructor(cvPoints3D, cvCameraMatrix, cvDistCoeffs) {

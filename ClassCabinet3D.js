@@ -1,4 +1,4 @@
-import { OBJLoader } from './blob/main/module.js';
+import { OBJLoader } from './module.js';
 
 export class Cabinet3D {
 	constructor(cabinetID, buttonID, inputID) {

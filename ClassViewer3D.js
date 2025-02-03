@@ -1,4 +1,4 @@
-import { THREE, OrbitControls } from './blob/main/module.js';
+import { THREE, OrbitControls } from './module.js';
 
 export class Viewer3D {
 	constructor(viewerID, width, height, FOV) {
