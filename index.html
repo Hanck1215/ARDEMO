@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="utf-8">
+        <title>Doctor-patient communication</title>
+        <meta name="description" content="Doctor-patient communication">
+        <link rel="icon" type="image/png" href="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<!-- CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+        <link href="AugmentedRealityPage.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    
+    <!-- THREE.js 、 OBJLoader 和 FaceMesh 等相關套件的引入 -->
+    <script type="importmap"> {"imports": {"three": "/three.module.js"}} </script>
+    <script type="module" src="/module.js"></script>
+    <script src="/face_mesh.js"></script>
+    <script src="/camera_utils.js"></script>
+    <script src="/drawing_utils.js"></script>
+    
+    <!-- 加載 OpenCV -->
+    <script>
+		let opencv = false;
+		function onOpenCvReady() {
+			cv['onRuntimeInitialized'] = () => {
+				console.log("OpenCV.js is ready.");
+				opencv = true;
+			}
+		}
+	</script>
+	<script async src="./opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+	
+    <body>
+	
+	<!-- 限制元素範圍 -->
+	<div id="ContentWrapper">
+		
+		<!-- 同時展示 "攝像頭畫面" && "3D物件" 的區域 -->
+		<div id="Area_000">
+		
+		<!-- 相機開關 -->
+		<div id="CameraSwitch">
+	    <label class="switch">
+	    <input type="checkbox">
+	    <span class="slider round">
+		</span></label>
+		<h3>Camera</h3>
+		</div>
+		
+		<div id="VideoArea"><video id="Video"></video></div>
+		<div id="Viewer3DArea"></div>
+		</div>
+		
+		<!-- 同時展示 "3D物件儲存櫃" && "儲存櫃按鈕" -->
+		<div id="Area_001">
+		<div id="Cabinet3D"></div>
+		<div id="CabinetBTN"><p>.OBJ</p></div>
+		<input id="InputFile" type="file" multiple>
+		<!-- 儲存櫃中的物件範例
+		<div class="Obj">
+			<p>Example.obj</p>
+			<input type = "range" min = "0" max = "100" value = "100">
+			<div class = "del"><p>X</p></div>
+		</div>
+		-->
+		</div>
+		
+	</div>
+	
+    </body>
+    
+    <script type="module" src="/AugmentedRealityPage.js"></script>
+</html>

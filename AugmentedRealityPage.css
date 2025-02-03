@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+html {
+    font-size: 16px;
+}
+
+body {
+	position: relative;
+	font-family: sans-serif;
+    line-height: 1.7;
+    color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+}
+
+#ContentWrapper {
+	/*border: 1px rgb(255, 255, 255) solid;*/
+	width: 100vw;
+	height: 100vh;
+	margin: 0 auto;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+
+
+
+
+/* 包含 VideoArea && Viewer3DArea */
+#Area_000 {
+	position: relative;
+	border: 1px rgb(255, 255, 255) solid;
+	width: 640px;
+	height: 480px;
+}
+
+/* 顯示攝像頭畫面的區域 */
+#VideoArea {
+	position: absolute;
+	width: 640px;
+	height: 480px;
+	
+	z-index: 1;
+}
+
+/* 顯示 3D 物件的區域 */
+#Viewer3DArea {
+	position: absolute;
+	width: 640px;
+	height: 480px;
+	
+	z-index: 2;
+}
+
+#CameraSwitch {
+	position: absolute;
+	z-index: 20;
+	left: 16px;
+	top: 12px;
+	display: flex;
+	align-items: center;  
+}
+
+#CameraSwitch h3 {
+	display: inline-block;
+	font-family: "Jost", sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	margin-left: 10px;
+	cursor: default;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255, 0.3);
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.slider:before {
+  position: absolute;
+  pointer-events: all;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 3px;
+  top: 4px;
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+input:checked + .slider {
+  background-color: rgb(0, 255, 0);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(0, 255, 0);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+/* 包含 "3D物件儲存櫃" && "儲存櫃按鈕" */
+#Area_001 {
+	width: 320px;
+	height: 480px;
+	
+	margin-left: 20px;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+/* 儲存 3D 物件的櫃子 */
+#Cabinet3D {
+	position: relative;
+	width: 320px;
+	height: 360px;
+	
+	border: 1px rgb(255, 255, 255) solid;
+	
+	padding: 10px 0;
+	
+	overflow-y: auto;
+}
+
+/* 儲存櫃的滾動條樣式 (適用於 WebKit 核心的瀏覽器，如 Chrome、Edge、Safari) */
+#Cabinet3D::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* 設定滾動條的按鈕 */
+#Cabinet3D::-webkit-scrollbar-button {
+	background: transparent;
+	border-radius: 4px;
+}
+
+/* 設定滾動條軌道的背景 */
+#Cabinet3D::-webkit-scrollbar-track-piece {
+	background: transparent;
+}
+
+/* 設定滾動條滑塊 */
+#Cabinet3D::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color:rgb(255, 255, 255, 0.7);
+	border: 1px solid rgb(0, 0, 0, 0.2);
+}
+
+/* 設定滾動條軌道的陰影 */
+#Cabinet3D::-webkit-scrollbar-track {
+	box-shadow: transparent;
+}
+
+/* 儲存櫃的 3D 物件輸入鈕 */
+#CabinetBTN {
+	width: 320px;
+	height: 100px;
+	
+	border: 1px rgb(255, 255, 255) solid;
+	margin-top: 20px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 當滑鼠經過按鈕時 */
+#CabinetBTN:hover {
+	background-color: rgb(51, 51, 51);
+	
+	cursor: pointer;
+}
+
+/* 設定按鈕文字 */
+#CabinetBTN p {
+	display: block;
+	
+	color: rgb(255, 255, 255);
+	font-family: "Jost", sans-serif;
+	font-size: 2.0rem;
+	
+	text-align: center;
+	line-height: 60px;
+	font-weight: 200;
+}
+
+/* 3D 物件儲存櫃中的物件樣式 */
+.Obj {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	width: 90%;
+	height: 80px;
+	border: 1px rgb(255, 255, 255) solid;
+	
+	margin: 0 auto;
+	margin-bottom: 16px;
+	word-break: break-all;
+}
+
+/* 當滑鼠經過時 */
+.Obj:hover {
+	cursor: pointer;
+	background-color: rgb(51, 51, 51);
+}
+
+/* 物件的文字樣式 */
+.Obj p {
+	display: block;
+	font-family: "Jost", sans-serif;
+	font-weight: 200;
+	text-align: center;
+}
+
+/* 物件的移除按鈕 */
+.Obj .del {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+/* 物件的移除按紐文字樣式 */
+.Obj .del p {
+	font-family: "Jost", sans-serif;
+	font-weight: 200;
+	text-align: center;
+}
+
+/* 當滑鼠經過物件的移除按鈕 */
+.Obj .del p:hover {
+	font-weight: 600;
+}
+
+/* 隱藏預設的檔案輸入樣式 */
+#InputFile {
+	display: none;
+}
