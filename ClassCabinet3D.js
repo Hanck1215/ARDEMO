@@ -149,6 +149,9 @@ export class Cabinet3D {
 					console.log("檔案已存在");
 				}
 			}
+			
+			//重置 InputElement
+			this.mInputElement.value = "";
 		});
 	}
 	

@@ -249,8 +249,11 @@ export class System {
 			if(this.mVideo.mbState) {
 				this.mViewer3D.ctrlDisable(); //禁用控制器
 			}else {
-				this.mViewer3D.ctrlEnable();  //開啟控制器
-				this.mPoseEstimator.mbUseExtrinsicGuess = false; //重新估計位姿
+				//如果相機關閉，且已經完成初始化
+				if(this.mbInitial) {
+					this.mViewer3D.ctrlEnable();  //開啟控制器
+					this.mPoseEstimator.mbUseExtrinsicGuess = false; //重新估計位姿
+				}
 			}
 			
 			//如果已經初始化而且沒有函數在執行而且相機開啟

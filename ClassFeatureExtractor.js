@@ -10,8 +10,8 @@ export class FeatureExtractor {
 		this.mFaceMesh.setOptions({
 		    maxNumFaces: 1,
 		    refineLandmarks: true,
-		    minDetectionConfidence: 0.7,
-		    minTrackingConfidence: 0.7
+		    minDetectionConfidence: 0.5,
+		    minTrackingConfidence: 0.5
 		});
 		
 		this.mFaceMesh.onResults(this.onResults);

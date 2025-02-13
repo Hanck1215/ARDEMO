@@ -24,7 +24,7 @@ export class Viewer3D {
 		this.mViewer.appendChild(this.mRenderer.domElement);
 		
 		//設定相機位置
-		this.mCamera.position.y = 500;
+		this.mCamera.position.y = 800;
 		this.mCamera.up.set(0, 0, 1);
 		
 		//控制器
@@ -45,12 +45,15 @@ export class Viewer3D {
 		    RIGHT: THREE.MOUSE.NONE     //禁用右鍵平移
 		};
 		
+		//預設先停用操作
+		this.ctrlDisable();
+		
 		//添加一些基礎的光源
 		this.mLight = new THREE.AmbientLight(0x404040, 5.0);
 		this.mDirLight_000 = new THREE.DirectionalLight(0xffffff, 1.5);
-		this.mDirLight_001 = new THREE.DirectionalLight(0xffffff, 1.0);
+		this.mDirLight_001 = new THREE.DirectionalLight(0xffffff, 0.6);
 		this.mDirLight_000.position.set(5, 5, 5).normalize();
-		this.mDirLight_001.position.set(-5, -5, -5).normalize();
+		this.mDirLight_001.position.set(-5, 0, 0).normalize();
 		this.mScene.add(this.mLight);
 		this.mScene.add(this.mDirLight_000);
 		this.mScene.add(this.mDirLight_001);
